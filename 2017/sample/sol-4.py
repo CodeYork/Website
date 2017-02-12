@@ -23,7 +23,20 @@ def has_won(board, player_char):
     """
     Return whether a player has won or not.
     """
-    # TODO: actually check if the given player has won or not
+    for i in range(0, 2):
+        # check row i
+        if board[i][0] == board[i][1] == board[i][2] == player_char:
+            return True
+        # check col i
+        if board[0][i] == board[1][i] == board[2][i] == player_char:
+            return True
+    # check \
+    if board[0][0] == board[1][1] == board[2][2] == player_char:
+        return True
+    # check /
+    if board[2][0] == board[1][1] == board[0][2] == player_char:
+        return True
+        
     return False
 
 def is_draw(board):
@@ -40,10 +53,11 @@ def is_full(board):
     """
     Return True if game board is full.
     """
-    # TODO: Check if the board is full
-    # and return appropriately
-    return False
-
+    for row in board:
+        for el in row:
+            if el == None:
+                return False
+    return True
 
 def print_board(board):
     # TODO: make this printing prettier
